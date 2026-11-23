@@ -27,6 +27,9 @@ def main() -> int:
     if not (1 <= len(text) <= 200):
         print(f"gate: review is {len(text)} characters, must be 1..200", file=sys.stderr)
         return 1
+    if "\n" in text or "\r" in text:
+        print("gate: review must be a single line (no newline/CR)", file=sys.stderr)
+        return 1
     if not text.strip():
         print("gate: review is whitespace-only", file=sys.stderr)
         return 1
